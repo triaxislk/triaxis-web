@@ -91,11 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Duplicate the list for infinite scroll effect
         const fullList = [...clients, ...clients];
         
-        clientTrack.innerHTML = fullList.map((client, index) => `
-            <div class="client-item" ${index < clients.length ? 'data-aos="fade-up"' : ''}>
+        clientTrack.innerHTML = fullList.map((client) => `
+            <div class="client-item">
                 <span>${client.name}</span>
             </div>
         `).join('');
+
     };
     renderClients();
 

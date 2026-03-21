@@ -553,6 +553,19 @@ section {
         text-align: center;
         margin-bottom: 4rem;
     }
+
+    .approach-grid > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .robot-float {
+        width: 80% !important; 
+        max-width: 400px !important; 
+        margin: 1rem auto 3rem;
+        display: block;
+    }
 }
 
 
@@ -618,12 +631,7 @@ section {
         visibility: visible;
     }
 
-    .robot-float {
-        width: 80% !important; 
-        max-width: 400px !important; 
-        margin: 1rem auto 3rem;
-        display: block;
-    }
+    /* robot-float centering moved to 1024px media query */
 
 
     .section-title-cute {

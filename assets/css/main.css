@@ -200,24 +200,25 @@ section {
     padding-top: var(--nav-height);
     background: radial-gradient(circle at 20% 30%, rgba(0, 122, 255, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 80% 70%, rgba(90, 200, 250, 0.05) 0%, transparent 40%);
+    overflow: hidden; /* Added to clip blobs */
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 4rem;
     align-items: center;
 }
 
 .hero-content h1 {
-    font-size: clamp(2.2rem, 4vw, 3.8rem); /* Slightly smaller, more refined */
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
     line-height: 1.1;
     margin-bottom: 2rem;
     font-weight: 800;
 }
 
 .hero-content p {
-    font-size: 1.15rem; /* Slightly smaller for elegance */
+    font-size: 1.15rem;
     color: var(--text-secondary);
     margin-bottom: 3rem;
     max-width: 580px;
@@ -227,6 +228,8 @@ section {
 .hero-image {
     position: relative;
     padding: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .hero-image img {
@@ -235,10 +238,6 @@ section {
     border-radius: 2rem;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s ease;
-}
-
-.hero-image:hover img {
-    transform: scale(1.02);
 }
 
 /* Decorative Blobs */
@@ -253,8 +252,9 @@ section {
     opacity: 0.3;
 }
 
-.blob-1 { top: -100px; right: -100px; }
-.blob-2 { bottom: -100px; left: -100px; animation-delay: 2s; }
+.blob-1 { top: -100px; right: -150px; }
+.blob-2 { bottom: -100px; left: -150px; }
+
 
 /* Service Cards */
 .services-grid {
@@ -500,12 +500,14 @@ section {
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block !important;
-        background: none;
-        border: none;
+        background: rgba(255, 255, 255, 0.05); /* Subtle background */
+        border: 1px solid var(--glass-border);
         color: white;
         cursor: pointer;
-        padding: 0.5rem;
+        padding: 0.8rem;
+        border-radius: 12px;
         z-index: 2001;
+        margin-right: 0.5rem; /* Keep it away from edge */
     }
 
     .nav-links {
@@ -558,19 +560,18 @@ section {
     }
 
     .robot-float {
-        width: 100% !important;
-        max-width: 450px !important; /* Forces bigger robot on mobile */
-        margin: 2rem auto;
+        width: 85% !important; /* Slightly more balanced */
+        max-width: 480px !important; 
+        margin: 1rem auto 3rem;
         display: block;
     }
-
 
     .section-title-cute {
         font-size: 1.7rem;
     }
     
     h1 {
-        font-size: 1.9rem !important;
+        font-size: 2.1rem !important; /* Slightly larger for impact */
     }
 
     .br-desktop {
@@ -578,7 +579,7 @@ section {
     }
 
     section {
-        padding: 50px 0;
+        padding: 60px 0;
     }
 
     .footer-grid {
@@ -587,18 +588,22 @@ section {
     }
 
     .contact-card {
-        padding: 1.25rem !important;
-        border-radius: 1.5rem;
-        width: 100%; /* Fix overflow */
+        padding: 2rem !important;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--glass-border);
+        border-radius: 2rem;
+        width: 100%;
         margin: 0;
     }
 
     .contact-container {
-        padding: 1.25rem !important;
-        gap: 2.5rem;
-        border-radius: 0;
+        padding: 0 !important; /* Let container handle it */
+        background: transparent;
+        border: none;
+        gap: 3rem;
     }
 }
+
 
 
 

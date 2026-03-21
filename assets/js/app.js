@@ -31,22 +31,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mobile Menu Toggle (To be implemented in HTML)
+    // Mobile Menu Toggle (Side Drawer)
     const setupMobileMenu = () => {
         const menuBtn = document.getElementById('mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
+        const overlay = document.getElementById('menu-overlay');
+        const navItems = document.querySelectorAll('.nav-links a');
         
-        if (menuBtn && navLinks) {
-            menuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                menuBtn.querySelector('i').setAttribute('data-lucide', 
-                    navLinks.classList.contains('active') ? 'x' : 'menu'
-                );
-                lucide.createIcons();
+        const toggleMenu = () => {
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        };
+
+        if (menuBtn && navLinks && overlay) {
+            menuBtn.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking a link
+            navItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
             });
         }
     };
     setupMobileMenu();
+
 
     // Clients Data & Rendering
     const clients = [

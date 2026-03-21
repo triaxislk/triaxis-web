@@ -30,9 +30,19 @@
     box-sizing: border-box;
 }
 
-html {
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+html, body {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -42,6 +52,7 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
+
 
 /* Typography Helpers */
 h1, h2, h3, h4, .font-heading {
@@ -504,14 +515,21 @@ section {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: #0f0f12;
+        background: #0d0d10; /* Solid background */
         border-left: 1px solid var(--glass-border);
-        padding: 80px 2rem 2rem;
-        gap: 1.5rem;
-        text-align: left;
+        padding: 100px 2rem 2rem;
+        gap: 2rem;
+        text-align: center; /* Center links for better focus */
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 2000;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        box-shadow: -15px 0 40px rgba(0,0,0,0.8);
+    }
+
+    .nav-links li a {
+        font-size: 1.25rem;
+        color: white !important;
+        text-decoration: none;
+        font-weight: 600;
     }
 
     .nav-links.active {
@@ -524,9 +542,9 @@ section {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.9); /* Darker overlay */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         z-index: 1999;
         opacity: 0;
         visibility: hidden;
@@ -538,12 +556,18 @@ section {
         visibility: visible;
     }
 
+    .robot-float {
+        width: 100%;
+        max-width: 400px; /* Bigger robot on mobile */
+        margin: 2rem auto;
+    }
+
     .section-title-cute {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
     }
     
     h1 {
-        font-size: 2rem !important;
+        font-size: 1.9rem !important;
     }
 
     .br-desktop {
@@ -551,7 +575,7 @@ section {
     }
 
     section {
-        padding: 40px 0;
+        padding: 50px 0;
     }
 
     .footer-grid {
@@ -560,20 +584,19 @@ section {
     }
 
     .contact-card {
-        padding: 1rem !important;
+        padding: 1.25rem !important;
         border-radius: 1.5rem;
-        margin: 0 -1rem; /* Expand to edges slightly if needed */
-        width: calc(100% + 2rem);
+        width: 100%; /* Fix overflow */
+        margin: 0;
     }
 
     .contact-container {
-        padding: 1rem !important;
+        padding: 1.25rem !important;
         gap: 2.5rem;
         border-radius: 0;
-        border-left: none;
-        border-right: none;
     }
 }
+
 
 
 

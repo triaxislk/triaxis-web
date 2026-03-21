@@ -445,17 +445,19 @@ section {
 }
 
 .client-item {
-    min-width: 260px; /* Slightly wider */
+    min-width: 260px;
     height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05); /* Slightly brighter */
+    border: 1px solid rgba(0, 122, 255, 0.4); /* Constant blue border glow */
     border-radius: 2rem;
     padding: 2rem;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    /* Constant primary glow */
+    box-shadow: 0 5px 25px rgba(0, 122, 255, 0.2), 
+                inset 0 0 15px rgba(0, 122, 255, 0.1);
     position: relative;
 }
 
@@ -464,34 +466,37 @@ section {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 1px; /* Border thickness */
-    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
+    padding: 1px;
+    /* Constant light beam/border glow */
+    background: linear-gradient(135deg, rgba(0,122,255,0.4), rgba(255,255,255,0.2), rgba(0,122,255,0.4));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.5;
+    opacity: 0.8; /* Higher opacity for constant glow */
 }
 
 .client-item span {
     font-weight: 700;
     text-align: center;
-    color: var(--text-secondary);
+    color: #ffffff; /* Pure white font as requested */
     font-size: 1.1rem;
     letter-spacing: 1px;
     transition: all 0.4s ease;
+    /* Constant subtle neon glow */
+    text-shadow: 0 0 10px rgba(0, 122, 255, 0.6);
 }
 
 .client-item:hover {
-    transform: translateY(-12px) scale(1.08); /* More aggressive pop */
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--accent);
-    box-shadow: 0 20px 60px rgba(0, 122, 255, 0.4);
+    transform: translateY(-12px) scale(1.08); 
+    background: rgba(0, 122, 255, 0.1); /* Blue tint on hover */
+    border-color: #007aff;
+    box-shadow: 0 20px 60px rgba(0, 122, 255, 0.6);
 }
 
 .client-item:hover span {
     color: white;
-    text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent-glow);
+    text-shadow: 0 0 20px #007aff, 0 0 40px var(--accent-glow);
     transform: scale(1.1);
 }
 

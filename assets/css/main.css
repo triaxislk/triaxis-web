@@ -82,7 +82,12 @@ section {
     border-bottom: 1px solid transparent;
 }
 
+.mobile-menu-btn {
+    display: none;
+}
+
 .navbar.scrolled {
+
     background: rgba(10, 10, 12, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -474,35 +479,57 @@ section {
         color: white;
         cursor: pointer;
         padding: 0.5rem;
-        z-index: 1001;
+        z-index: 2001;
     }
 
     .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(10, 10, 10, 0.95);
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(10, 10, 12, 0.98);
         backdrop-filter: blur(20px);
-        padding: 2rem;
+        -webkit-backdrop-filter: blur(20px);
+        padding: 80px 2rem 2rem;
         gap: 1.5rem;
-        text-align: center;
-        border-bottom: 1px solid var(--glass-border);
+        text-align: left;
+        border-left: 1px solid var(--glass-border);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2000;
     }
 
     .nav-links.active {
-        display: flex;
+        right: 0;
     }
 
-    
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        z-index: 1999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
     .section-title-cute {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     h1 {
-        font-size: 2.5rem !important;
+        font-size: 2.2rem !important;
     }
 
     .br-desktop {
@@ -510,12 +537,12 @@ section {
     }
 
     section {
-        padding: 60px 1rem;
+        padding: 50px 1rem;
     }
 
     .footer-grid {
         text-align: center;
-        gap: 4rem;
+        gap: 3rem;
     }
 
     .footer-grid div {
@@ -527,6 +554,7 @@ section {
     .footer-bottom {
         justify-content: center;
         text-align: center;
+        gap: 1.5rem;
     }
 
     .serve-grid {
@@ -534,13 +562,16 @@ section {
     }
 
     .contact-card {
-        padding: 1.5rem !important;
+        padding: 1.25rem !important;
+        border-radius: 1.5rem;
     }
 
     .contact-container {
-        gap: 3rem;
+        padding: 1.25rem !important;
+        gap: 2.5rem;
     }
 }
+
 
 .contact-details {
     display: grid;

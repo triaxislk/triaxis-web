@@ -20,8 +20,9 @@
     /* Layout */
     --container-max: 1280px;
     --nav-height: 80px;
-    --section-padding: 100px 0;
+    --section-padding: 60px 0; /* Reduced from 100px for seamless flow */
 }
+
 
 /* Base Reset */
 * {
@@ -462,20 +463,55 @@ section {
     gap: 1.5rem;
 }
 
-.footer-grid {
-    display: grid; 
-    grid-template-columns: 2fr 1fr 1fr; 
-    gap: 5rem; 
-    padding-bottom: 50px; 
+/* Section Transitions & Glass Look */
+section {
+    padding: var(--section-padding);
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02); /* Very subtle separator */
+}
+
+#services {
+    background: radial-gradient(circle at 10% 20%, rgba(0, 122, 255, 0.03) 0%, transparent 50%),
+                var(--primary-bg);
+}
+
+#clients {
+    background: var(--secondary-bg);
+    border-top: 1px solid var(--glass-border);
     border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#why-choose {
+    background: radial-gradient(circle at 90% 80%, rgba(90, 200, 250, 0.03) 0%, transparent 50%),
+                var(--primary-bg);
 }
 
 .contact-container {
     gap: 4rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 
+
 /* Mobile Responsive */
+.footer {
+    padding: 80px 0 50px;
+    background: linear-gradient(to bottom, #0f0f12, #0a0a0c);
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .approach-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

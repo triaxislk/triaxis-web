@@ -832,3 +832,15 @@ section {
     margin-bottom: 1.5rem;
     letter-spacing: -1px;
 }
+
+/* Phone Number Responsive Wrap */
+.phone-break::before {
+    content: ""; /* No break by default for TAB/Desktop */
+}
+
+@media (max-width: 480px) {
+    .phone-break::before {
+        content: "\A"; /* Force wrap on very small mobile phones */
+        white-space: pre;
+    }
+}

@@ -337,7 +337,7 @@ section {
     overflow: hidden;
     padding: 3rem 0;
     position: relative;
-    background: rgba(255, 255, 255, 0.02);
+    background: transparent;
 }
 
 .carousel-track {
@@ -440,7 +440,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
-    background: var(--secondary-bg);
+    background: transparent;
     padding: 4rem;
     border-radius: 3rem;
     border: 1px solid var(--glass-border);

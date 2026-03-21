@@ -58,14 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Close menu when clicking a link
             navItems.forEach(link => {
-                link.addEventListener('click', (e) => {
+                link.addEventListener('click', () => {
                     if (navLinks.classList.contains('active')) {
                         toggleMenu();
                     }
-                });
+                }, { passive: true });
             });
         }
     };
+
     setupMobileMenu();
 
 

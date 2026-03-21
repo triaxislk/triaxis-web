@@ -377,21 +377,21 @@ section {
     display: flex;
     gap: 2rem; /* Tighter gap for better flow */
     width: max-content;
-    animation: scroll 45s linear infinite; /* Default (Desktop) */
+    animation: scroll 100s linear infinite; /* Very slow for Desktop readability */
     will-change: transform;
 }
 
 /* Tablet Speed (as requested) */
 @media (max-width: 1024px) {
     .carousel-track {
-        animation-duration: 25s;
+        animation-duration: 30s;
     }
 }
 
-/* Mobile Speed */
+/* Mobile Speed (Slower for readability) */
 @media (max-width: 768px) {
     .carousel-track {
-        animation-duration: 40s;
+        animation-duration: 80s;
     }
 }
 

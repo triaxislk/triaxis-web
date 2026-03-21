@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriAxis Solutions | Innovation, Precision, Engineering Excellence</title>
+    
+    <!-- Google Fonts: Inter & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <!-- Premium Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <img src="assets/images/Logo White fonts.png" alt="TriAxis Solutions">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+            </ul>
+
+            <button id="mobile-menu-btn" style="display: none;">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div id="blob-1" class="blob blob-1"></div>
+            <div id="blob-2" class="blob blob-2"></div>
+            
+            <div class="container hero-grid">
+                <div class="hero-content" data-aos="fade-right">
+                    <div class="badge">Next-Gen Tech Excellence</div>
+                    <h1>Innovation, <br><span class="text-gradient">Precision</span>, Results.</h1>
+                    <p>At TriAxis Solutions (Pvt) Ltd., we provide professional technology and infrastructure installation services for residential, commercial, and industrial clients. Backed by an experienced technical team, we focus on precise execution and reliable results.</p>
+                    
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <a href="#services" class="nav-cta" style="padding: 1rem 2.5rem; border-radius: 1rem;">Our Services</a>
+                        <a href="#about" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: white; font-weight: 600;">Learn More <i data-lucide="arrow-right" style="width: 18px;"></i></a>
+                    </div>
+                </div>
+                
+                <div class="hero-image" data-aos="zoom-in" data-aos-delay="200">
+                    <div style="position: relative;">
+                        <!-- Hero Combat Robo (Resized slightly) -->
+                        <img src="assets/images/Army Robo - Without PNG.png" alt="Engineering" class="robot-float" style="width: 100%; max-width: 500px;">
+                        <!-- Glowing Background Elements -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); filter: blur(60px); opacity: 0.3; z-index: -1;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="hero-grid" style="margin-bottom: 5rem;">
+                    <div class="hero-image" data-aos="fade-right">
+                        <img src="assets/images/Shake Hands.png" alt="Our Team" style="border-radius: 3rem; width: 100%; filter: drop-shadow(0 0 20px rgba(0, 122, 255, 0.2));">
+                    </div>
+                    <div data-aos="fade-left">
+                        <div class="badge">Who We Are</div>
+                        <h2 class="section-title-cute">Innovation, Precision, Reliability</h2>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                            At TriAxis Solutions (Pvt) Ltd., we provide professional technology and infrastructure installation services for residential, commercial, and industrial clients. Backed by an experienced technical team, our core focus remains on precise execution, compliance with technical standards, and delivering reliable, long-term infrastructure solutions.
+                        </p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div class="service-card" style="padding: 1.5rem; border-radius: 1.5rem;">
+                                <i data-lucide="eye" style="color: var(--accent); margin-bottom: 1rem;"></i>
+                                <h4>Our Vision</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">“To be Sri Lanka’s most trusted partner in smart technology installations—connecting people, power, and possibilities through innovation, precision, and reliability.”</p>
+                            </div>
+                            <div class="service-card" style="padding: 1.5rem; border-radius: 1.5rem;">
+                                <i data-lucide="target" style="color: var(--highlight); margin-bottom: 1rem;"></i>
+                                <h4>Our Mission</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">“To deliver smart, secure, and sustainable installation solutions—empowering homes and businesses with cutting-edge technology and unmatched service excellence.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Who We Serve -->
+                <div data-aos="fade-up">
+                    <div style="text-align: center; margin-bottom: 3rem;">
+                        <div class="badge">Market Reach</div>
+                        <h2 class="section-title-cute">Who We Serve</h2>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                        <div class="feature-point">
+                            <i data-lucide="building-2" class="text-gradient float-anim" style="width: 30px;"></i>
+                            <p style="font-weight: 600;">Businesses of All Sizes</p>
+                        </div>
+                        <div class="feature-point">
+                            <i data-lucide="landmark" class="text-gradient float-anim" style="width: 30px;"></i>
+                            <p style="font-weight: 600;">Gov & Private Institutions</p>
+                        </div>
+                        <div class="feature-point">
+                            <i data-lucide="home" class="text-gradient float-anim" style="width: 30px;"></i>
+                            <p style="font-weight: 600;">Homeowners & Developers</p>
+                        </div>
+                        <div class="feature-point">
+                            <i data-lucide="factory" class="text-gradient float-anim" style="width: 30px;"></i>
+                            <p style="font-weight: 600;">Industrial Facilities</p>
+                        </div>
+                        <div class="feature-point">
+                            <i data-lucide="shopping-bag" class="text-gradient float-anim" style="width: 30px;"></i>
+                            <p style="font-weight: 600;">Retail & Hospitality</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" style="background: var(--secondary-bg);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 4rem;" data-aos="fade-up">
+                    <div class="badge">Capabilities</div>
+                    <h2 class="section-title-cute">Our Services</h2>
+                </div>
+
+                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <!-- S1 -->
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-icon"><i data-lucide="network"></i></div>
+                        <h3>Network Design & Installation</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Customized and scalable network infrastructure setup for businesses and homes.</p>
+                    </div>
+                    <!-- S2 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="service-icon"><i data-lucide="workflow"></i></div>
+                        <h3>Structured Cabling Solutions</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Reliable and organized cabling systems that support robust communication networks.</p>
+                    </div>
+                    <!-- S3 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-icon"><i data-lucide="video"></i></div>
+                        <h3>CCTV Camera Solutions</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Analog & Digital surveillance for residential, commercial, and industrial environments.</p>
+                    </div>
+                    <!-- S4 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="service-icon"><i data-lucide="lock"></i></div>
+                        <h3>Access Control Systems</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Secure entry management through card readers, biometrics, and keypads.</p>
+                    </div>
+                    <!-- S5 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon"><i data-lucide="fingerprint"></i></div>
+                        <h3>Biometric Attendance</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Enhance workforce management with secure and accurate attendance systems.</p>
+                    </div>
+                    <!-- S6 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="service-icon"><i data-lucide="zap"></i></div>
+                        <h3>Electrical & Power</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Safe and compliant electrical wiring and power distribution services.</p>
+                    </div>
+                    <!-- S7 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-icon" style="background: var(--accent-glow);"><i data-lucide="plug-zap"></i></div>
+                        <h3>EV Charger Installations</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Professional EV charger installation services for homes and businesses.</p>
+                    </div>
+                    <!-- S8 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="service-icon"><i data-lucide="cpu"></i></div>
+                        <h3>Custom Smart Tech</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Bespoke smart technologies tailored to client-specific needs.</p>
+                    </div>
+                    <!-- S9 -->
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-icon"><i data-lucide="phone-forwarded"></i></div>
+                        <h3>PABX (Analog & Digital)</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Internal telecommunication systems for streamlined voice communications.</p>
+                    </div>
+                    <!-- S10 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="service-icon"><i data-lucide="home"></i></div>
+                        <h3>Smart Home Automation</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Intelligent control systems for lighting, security, and more.</p>
+                    </div>
+                    <!-- S11 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-icon"><i data-lucide="flame"></i></div>
+                        <h3>Fire Alarm Systems</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Early warning systems to protect property and life from fire hazards.</p>
+                    </div>
+                    <!-- S12 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="service-icon"><i data-lucide="activity"></i></div>
+                        <h3>Fiber Optic Solutions</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">High-speed, high-bandwidth data transmission networks.</p>
+                    </div>
+                    <!-- S13 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon"><i data-lucide="car"></i></div>
+                        <h3>Parking Management</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Automated vehicle parking control and management systems.</p>
+                    </div>
+                    <!-- S14 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="service-icon"><i data-lucide="battery-charging"></i></div>
+                        <h3>UPS Solutions</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Uninterruptible power supplies for critical operations and systems.</p>
+                    </div>
+                    <!-- S15 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-icon"><i data-lucide="gauge"></i></div>
+                        <h3>Traffic Enforcement</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Precision solutions for road safety tech and maintenance.</p>
+                    </div>
+                    <!-- S16 -->
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="service-icon"><i data-lucide="calendar-check"></i></div>
+                        <h3>Lifecycle AMC</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Scheduled service and support (AMC) to keep systems running smoothly.</p>
+                    </div>
+                    <!-- S17 -->
+                    <div class="service-card" data-aos="fade-up">
+                        <div class="service-icon"><i data-lucide="map-pin"></i></div>
+                        <h3>Smart City management</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Cutting-edge solutions to transform urban infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section id="why-choose">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 4rem;" data-aos="fade-up">
+                    <div class="badge">Excellence</div>
+                    <h2 class="section-title-cute">Why Choose Us?</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 6rem;">
+                    <div data-aos="fade-right">
+                        <h2 style="font-size: 3rem; margin-bottom: 2rem;">Advanced Technology <span class="text-gradient">Solutions</span></h2>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem; font-size: 1.1rem;">Driven by artificial intelligence and high-precision engineering, our installation services are designed for the next generation of smart infrastructure.</p>
+                        <div style="display: flex; gap: 2rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="color: var(--accent);"><i data-lucide="cpu" style="width: 30px; height: 30px;"></i></div>
+                                <span style="font-weight: 600;">AI Powered</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="color: var(--accent);"><i data-lucide="zap" style="width: 30px; height: 30px;"></i></div>
+                                <span style="font-weight: 600;">Fast Execution</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" style="position: relative; overflow: visible; text-align: center;">
+                        <img src="assets/images/robot without background.png" alt="Robotic Engineering" class="robot-float" style="width: 100%; max-width: 350px; object-fit: contain;">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="feature-point" data-aos="fade-up">
+                        <div class="feature-icon">🔶</div>
+                        <div class="feature-content">
+                            <h4>Skilled Team</h4>
+                            <p>Highly skilled and experienced technical professionals.</p>
+                        </div>
+                    </div>
+                    <div class="feature-point" data-aos="fade-up" data-aos-delay="50">
+                        <div class="feature-icon">🔶</div>
+                        <div class="feature-content">
+                            <h4>Tailored Solutions</h4>
+                            <p>Bespoke implementations to meet your exact needs.</p>
+                        </div>
+                    </div>
+                    <div class="feature-point" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon">🔶</div>
+                        <div class="feature-content">
+                            <h4>End-to-End Handling</h4>
+                            <p>Complete project management from design to delivery.</p>
+                        </div>
+                    </div>
+                    <div class="feature-point" data-aos="fade-up" data-aos-delay="150">
+                        <div class="feature-icon">🔶</div>
+                        <div class="feature-content">
+                            <h4>Latest Technologies</h4>
+                            <p>Using quality materials and cutting-edge innovations.</p>
+                        </div>
+                    </div>
+                    <div class="feature-point" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon">🔶</div>
+                        <div class="feature-content">
+                            <h4>Strong Support</h4>
+                            <p>Dedicated after-sales and technical support team.</p>
+                        </div>
+                    </div>
+                    <div class="feature-point" data-aos="fade-up" data-aos-delay="250">
+                        <div class="feature-icon">🔶</div>
+                        <div class="feature-content">
+                            <h4>Quality First</h4>
+                            <p>Commitment to quality and customer satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients Carousel Section -->
+        <section id="clients" style="background: var(--secondary-bg); padding: 80px 0;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3rem;" data-aos="fade-up">
+                    <div class="badge">Trusted Partners</div>
+                    <h2 class="section-title-cute">Our Prestigious Clients</h2>
+                </div>
+            </div>
+            
+            <div class="client-carousel">
+                <div id="client-track" class="carousel-track">
+                    <!-- Injected by app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="contact-container" data-aos="fade-up">
+                    <div>
+                        <div class="badge">Contact Us</div>
+                        <h2 class="section-title-cute">Let's Build Something <br>Smart Together</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8;">We're here to answer your questions, offer expert advice, and deliver the perfect solution for your needs. Reach out to us today — we’d love to hear from you!</p>
+                        
+                        <div style="display: grid; gap: 2rem;">
+                            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                                <div style="width: 50px; height: 50px; background: rgba(0, 122, 255, 0.1); color: var(--accent); border-radius: 1rem; display: flex; align-items: center; justify-content: center;"><i data-lucide="map-pin"></i></div>
+                                <div>
+                                    <p style="font-weight: 700;">Office Address</p>
+                                    <p style="color: var(--text-secondary);">No. 683, Town Road, Homagama, Sri Lanka. 10200</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                                <div style="width: 50px; height: 50px; background: rgba(0, 122, 255, 0.1); color: var(--accent); border-radius: 1rem; display: flex; align-items: center; justify-content: center;"><i data-lucide="phone"></i></div>
+                                <div>
+                                    <p style="font-weight: 700;">Phone</p>
+                                    <p style="color: var(--text-secondary);">076 988 6969 | 070 218 0180 | 076 247 4013</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                                <div style="width: 50px; height: 50px; background: rgba(0, 122, 255, 0.1); color: var(--accent); border-radius: 1rem; display: flex; align-items: center; justify-content: center;"><i data-lucide="mail"></i></div>
+                                <div>
+                                    <p style="font-weight: 700;">Email Us</p>
+                                    <p style="color: var(--text-secondary);">info@triaxis.lk</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                                <div style="width: 50px; height: 50px; background: rgba(0, 122, 255, 0.1); color: var(--accent); border-radius: 1rem; display: flex; align-items: center; justify-content: center;"><i data-lucide="globe"></i></div>
+                                <div>
+                                    <p style="font-weight: 700;">Website</p>
+                                    <p style="color: var(--text-secondary);">www.triaxis.lk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="contact-form" style="background: rgba(255, 255, 255, 0.02); padding: 3rem; border-radius: 2rem; border: 1px solid var(--glass-border);">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="from_name" class="form-control" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="from_email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="nav-cta" style="width: 100%; padding: 1.25rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            Send Message <i data-lucide="send" style="width: 18px;"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="padding: 100px 0 50px; background: var(--primary-bg);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 5rem; padding-bottom: 50px; border-bottom: 1px solid var(--glass-border);">
+                <div>
+                    <img src="assets/images/Logo White fonts.png" alt="TriAxis" style="height: 80px; margin-bottom: 2rem; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));">
+                    <p style="color: var(--text-secondary); max-width: 400px; margin-bottom: 2rem;">Sri Lanka’s most trusted partner in smart technology installations. Connecting people, power, and possibilities through innovation and precision.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://wa.me/94702180180" target="_blank" style="width: 45px; height: 45px; border-radius: 0.75rem; background: var(--glass-bg); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; color: #25D366; text-decoration: none;"><i data-lucide="phone-call" style="width: 20px;"></i></a>
+                        <a href="https://www.facebook.com/triaxis.lk" target="_blank" style="width: 45px; height: 45px; border-radius: 0.75rem; background: var(--glass-bg); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; color: #1877F2; text-decoration: none;"><i data-lucide="facebook" style="width: 20px;"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 2rem; color: white;">Quick Links</h4>
+                    <ul style="list-style: none; display: grid; gap: 1rem;">
+                        <li><a href="#home" style="color: var(--text-secondary); text-decoration: none;">Home</a></li>
+                        <li><a href="#about" style="color: var(--text-secondary); text-decoration: none;">About Us</a></li>
+                        <li><a href="#services" style="color: var(--text-secondary); text-decoration: none;">Our Services</a></li>
+                        <li><a href="#contact" style="color: var(--text-secondary); text-decoration: none;">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 2rem; color: white;">Our Services</h4>
+                    <ul style="list-style: none; display: grid; gap: 1rem; color: var(--text-secondary);">
+                        <li>Network & Infrastructure</li>
+                        <li>CCTV & Security Systems</li>
+                        <li>Access Control & Biometrics</li>
+                        <li>Smart Home Automation</li>
+                        <li>EV Charger Installation</li>
+                        <li>Lifecycle AMC & Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                <p style="color: var(--text-secondary);">&copy; 2025 - 2026 TriAxis Solutions (Pvt) Ltd. All rights reserved.</p>
+                
+                <div style="display: flex; gap: 2rem;">
+                    <a href="assets/policy/privacy-policy.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="assets/policy/terms-of-service.html" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/94702180180" target="_blank" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <i data-lucide="phone-call" style="width: 30px; height: 30px;"></i>
+    </a>
+
+    <!-- Custom Logic -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

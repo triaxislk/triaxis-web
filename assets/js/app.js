@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Close menu when clicking a link
             navItems.forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', (e) => {
                     if (navLinks.classList.contains('active')) {
                         toggleMenu();
                     }
@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     setupMobileMenu();
+
 
 
     // Clients Data & Rendering

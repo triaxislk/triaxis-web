@@ -560,11 +560,12 @@ section {
     }
 
     .robot-float {
-        width: 85% !important; /* Slightly more balanced */
-        max-width: 480px !important; 
+        width: 80% !important; 
+        max-width: 400px !important; 
         margin: 1rem auto 3rem;
         display: block;
     }
+
 
     .section-title-cute {
         font-size: 1.7rem;

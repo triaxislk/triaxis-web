@@ -63,6 +63,13 @@ h1, h2, h3, h4, .font-heading {
     padding: 0 2rem;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+
 section {
     padding: var(--section-padding);
 }
@@ -81,6 +88,13 @@ section {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid transparent;
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 70px;
+    }
+}
+
 
 .mobile-menu-btn {
     display: none;
@@ -490,15 +504,14 @@ section {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: rgba(10, 10, 12, 0.98);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: #0f0f12;
+        border-left: 1px solid var(--glass-border);
         padding: 80px 2rem 2rem;
         gap: 1.5rem;
         text-align: left;
-        border-left: 1px solid var(--glass-border);
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 2000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     }
 
     .nav-links.active {
@@ -511,8 +524,9 @@ section {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(0, 0, 0, 0.8);
         backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         z-index: 1999;
         opacity: 0;
         visibility: hidden;
@@ -525,11 +539,11 @@ section {
     }
 
     .section-title-cute {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     h1 {
-        font-size: 2.2rem !important;
+        font-size: 2rem !important;
     }
 
     .br-desktop {
@@ -537,7 +551,7 @@ section {
     }
 
     section {
-        padding: 50px 1rem;
+        padding: 40px 0;
     }
 
     .footer-grid {
@@ -545,32 +559,22 @@ section {
         gap: 3rem;
     }
 
-    .footer-grid div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-bottom {
-        justify-content: center;
-        text-align: center;
-        gap: 1.5rem;
-    }
-
-    .serve-grid {
-        grid-template-columns: 1fr;
-    }
-
     .contact-card {
-        padding: 1.25rem !important;
+        padding: 1rem !important;
         border-radius: 1.5rem;
+        margin: 0 -1rem; /* Expand to edges slightly if needed */
+        width: calc(100% + 2rem);
     }
 
     .contact-container {
-        padding: 1.25rem !important;
+        padding: 1rem !important;
         gap: 2.5rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
     }
 }
+
 
 
 .contact-details {

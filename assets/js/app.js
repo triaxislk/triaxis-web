@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS Animations
     if (typeof AOS !== 'undefined') {
         AOS.init({
-            duration: 1200,
+            duration: 800,
             easing: 'ease-in-out',
             once: true,
             mirror: false

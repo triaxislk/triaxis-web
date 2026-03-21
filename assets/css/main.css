@@ -377,7 +377,7 @@ section {
     display: flex;
     gap: 2rem; /* Tighter gap for better flow */
     width: max-content;
-    animation: scroll 40s linear infinite;
+    animation: scroll 25s linear infinite;
     will-change: transform;
 }
 

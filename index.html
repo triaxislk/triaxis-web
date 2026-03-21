@@ -9,14 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
     
     <!-- AOS Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous"></script>
     
     <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous"></script>
     
     <!-- Premium Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -402,15 +402,15 @@
                     <form id="contact-form" class="contact-card">
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" name="from_name" class="form-control" placeholder="John Doe" required>
+                            <input type="text" name="from_name" class="form-control" placeholder="John Doe" required maxlength="100">
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" name="from_email" class="form-control" placeholder="john@example.com" required>
+                            <input type="email" name="from_email" class="form-control" placeholder="john@example.com" required maxlength="150">
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea name="message" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
+                            <textarea name="message" class="form-control" rows="4" placeholder="How can we help you?" required maxlength="2000"></textarea>
                         </div>
                         <button type="submit" class="nav-cta" style="width: 100%; padding: 1.25rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                             Send Message <i data-lucide="send" style="width: 18px;"></i>
@@ -429,8 +429,8 @@
                     <img src="assets/images/Logo White fonts.png" alt="TriAxis" style="height: 80px; margin-bottom: 2rem; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));">
                     <p style="color: var(--text-secondary); max-width: 400px; margin-bottom: 2rem;">Sri Lanka’s most trusted partner in smart technology installations. Connecting people, power, and possibilities through innovation and precision.</p>
                     <div style="display: flex; gap: 1rem;">
-                        <a href="https://wa.me/94702180180" target="_blank" style="width: 45px; height: 45px; border-radius: 0.75rem; background: var(--glass-bg); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; color: #25D366; text-decoration: none;"><i data-lucide="phone-call" style="width: 20px;"></i></a>
-                        <a href="https://www.facebook.com/triaxis.lk" target="_blank" style="width: 45px; height: 45px; border-radius: 0.75rem; background: var(--glass-bg); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; color: #1877F2; text-decoration: none;"><i data-lucide="facebook" style="width: 20px;"></i></a>
+                        <a href="https://wa.me/94702180180" target="_blank" rel="noopener noreferrer" style="width: 45px; height: 45px; border-radius: 0.75rem; background: var(--glass-bg); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; color: #25D366; text-decoration: none;"><i data-lucide="phone-call" style="width: 20px;"></i></a>
+                        <a href="https://www.facebook.com/triaxis.lk" target="_blank" rel="noopener noreferrer" style="width: 45px; height: 45px; border-radius: 0.75rem; background: var(--glass-bg); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; color: #1877F2; text-decoration: none;"><i data-lucide="facebook" style="width: 20px;"></i></a>
                     </div>
                 </div>
                 <div>
@@ -466,7 +466,7 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/94702180180" target="_blank" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <a href="https://wa.me/94702180180" target="_blank" rel="noopener noreferrer" style="position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         <i data-lucide="phone-call" style="width: 30px; height: 30px;"></i>
     </a>
 

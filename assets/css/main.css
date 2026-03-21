@@ -267,13 +267,37 @@ section {
 .service-card {
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
-    padding: 2.2rem; /* Slighlty more compact */
+    padding: 1.5rem; /* More balanced padding */
     border-radius: 1.8rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     height: 100%;
 }
+
+.card-image {
+    width: calc(100% + 3rem); /* Compensate for card padding */
+    margin-left: -1.5rem;
+    margin-top: -1.5rem;
+    height: 160px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.8) contrast(1.1);
+}
+
+.service-card:hover .card-image img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
 
 .service-card h3 {
     font-size: 1.1rem; /* Cute/Smaller headings */
@@ -471,22 +495,20 @@ section {
 }
 
 #services {
-    background: radial-gradient(circle at 10% 20%, rgba(0, 122, 255, 0.03) 0%, transparent 50%),
-                var(--primary-bg);
+    background: transparent;
 }
 
 #clients {
-    background: var(--secondary-bg);
-    border-top: 1px solid var(--glass-border);
-    border-bottom: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 #why-choose {
-    background: radial-gradient(circle at 90% 80%, rgba(90, 200, 250, 0.03) 0%, transparent 50%),
+    background: radial-gradient(circle at 90% 80%, rgba(0, 122, 255, 0.02) 0%, transparent 50%),
                 var(--primary-bg);
 }
+
 
 .contact-container {
     gap: 4rem;
@@ -500,9 +522,10 @@ section {
 /* Mobile Responsive */
 .footer {
     padding: 80px 0 50px;
-    background: linear-gradient(to bottom, #0f0f12, #0a0a0c);
-    border-top: 1px solid var(--glass-border);
+    background: var(--primary-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 
 .footer-grid {
     display: grid;

@@ -439,6 +439,11 @@ section {
     border-bottom: 1px solid var(--glass-border);
 }
 
+.contact-container {
+    gap: 4rem;
+}
+
+
 /* Mobile Responsive */
 @media (max-width: 1024px) {
     .hero-grid, .contact-container, .footer-grid {
@@ -462,9 +467,35 @@ section {
 }
 
 @media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block !important;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+    }
+
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        gap: 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid var(--glass-border);
     }
+
+    .nav-links.active {
+        display: flex;
+    }
+
     
     .section-title-cute {
         font-size: 2.2rem;
@@ -474,8 +505,12 @@ section {
         font-size: 2.5rem !important;
     }
 
+    .br-desktop {
+        display: none;
+    }
+
     section {
-        padding: 60px 1.5rem;
+        padding: 60px 1rem;
     }
 
     .footer-grid {
@@ -497,7 +532,33 @@ section {
     .serve-grid {
         grid-template-columns: 1fr;
     }
+
+    .contact-card {
+        padding: 1.5rem !important;
+    }
+
+    .contact-container {
+        gap: 3rem;
+    }
 }
+
+.contact-details {
+    display: grid;
+    gap: 2rem;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 3rem;
+    border-radius: 2rem;
+    border: 1px solid var(--glass-border);
+}
+
+.br-desktop {
+    display: inline;
+}
+
+
 
 
 /* Feature Points (Why Choose Us) */

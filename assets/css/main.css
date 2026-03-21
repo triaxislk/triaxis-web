@@ -476,26 +476,26 @@ section {
 
 
 /* Mobile Responsive */
+.approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
 @media (max-width: 1024px) {
-    .hero-grid, .contact-container, .footer-grid {
+    .hero-grid, .contact-container, .footer-grid, .approach-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
     
-    .hero {
-        padding-top: 100px;
+    .approach-grid {
         text-align: center;
-    }
-    
-    .hero-content p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
+        margin-bottom: 4rem;
     }
 }
+
 
 @media (max-width: 768px) {
     .mobile-menu-btn {

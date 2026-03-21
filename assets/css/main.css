@@ -418,9 +418,30 @@ section {
     background: rgba(255, 255, 255, 0.08);
 }
 
+/* Grid Systems */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.serve-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.footer-grid {
+    display: grid; 
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 5rem; 
+    padding-bottom: 50px; 
+    border-bottom: 1px solid var(--glass-border);
+}
+
 /* Mobile Responsive */
 @media (max-width: 1024px) {
-    .hero-grid, .contact-container {
+    .hero-grid, .contact-container, .footer-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
@@ -434,6 +455,10 @@ section {
         margin-left: auto;
         margin-right: auto;
     }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -441,14 +466,39 @@ section {
         display: none;
     }
     
-    .section-title {
-        font-size: 2.5rem;
+    .section-title-cute {
+        font-size: 2.2rem;
     }
     
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
     section {
-        padding: 60px 0;
+        padding: 60px 1.5rem;
+    }
+
+    .footer-grid {
+        text-align: center;
+        gap: 4rem;
+    }
+
+    .footer-grid div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-bottom {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .serve-grid {
+        grid-template-columns: 1fr;
     }
 }
+
 
 /* Feature Points (Why Choose Us) */
 .feature-point {

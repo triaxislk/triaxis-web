@@ -377,22 +377,18 @@ section {
     display: flex;
     gap: 2rem; /* Tighter gap for better flow */
     width: max-content;
-    animation: scroll 100s linear infinite; /* Very slow for Desktop readability */
+    animation: scroll 120s linear infinite; /* Extremely slow for maximum readability */
     will-change: transform;
 }
 
-/* Tablet Speed (as requested) */
+/* Tablet improvements (keep other styles if any) */
 @media (max-width: 1024px) {
-    .carousel-track {
-        animation-duration: 30s;
-    }
+    /* No speed scale-down needed if 120s is base */
 }
 
-/* Mobile Speed (Slower for readability) */
+/* Mobile improvements */
 @media (max-width: 768px) {
-    .carousel-track {
-        animation-duration: 80s;
-    }
+    /* No speed scale-down needed if 120s is base */
 }
 
 @keyframes scroll {

@@ -375,15 +375,15 @@ section {
 
 .carousel-track {
     display: flex;
-    gap: 4rem;
+    gap: 2rem; /* Tighter gap for better flow */
     width: max-content;
     animation: scroll 40s linear infinite;
-    --accent-glow: rgba(0, 122, 255, 0.4);
+    will-change: transform;
 }
 
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-50%); } /* Still -50% because we want to loop half of the duplicated content */
 }
 
 @keyframes float {

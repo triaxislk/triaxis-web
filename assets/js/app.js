@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const clientTrack = document.getElementById('client-track');
         if (!clientTrack) return;
 
-        // Duplicate the list for infinite scroll effect
-        const fullList = [...clients, ...clients];
+        // Duplicate the list multiple times for infinite scroll seamless effect
+        const fullList = [...clients, ...clients, ...clients, ...clients];
         
         clientTrack.innerHTML = fullList.map((client) => `
             <div class="client-item">

@@ -764,6 +764,11 @@ section {
         border: none;
         gap: 3rem;
     }
+
+    .footer-rights {
+        display: block;
+        margin-top: 0.5rem;
+    }
 }
 
 

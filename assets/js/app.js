@@ -154,11 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             btn.disabled = true;
 
-            // EmailJS send (Explicitly mapping fields to match the template)
+            // EmailJS send (Safer mapping using the 'elements' collection)
             const templateParams = {
-                name: contactForm.name.value,
-                email: contactForm.email.value,
-                message: contactForm.message.value,
+                name: contactForm.elements['name'].value,
+                email: contactForm.elements['email'].value,
+                message: contactForm.elements['message'].value,
                 title: 'New Message from TriAxis Website',
                 time: new Date().toLocaleString()
             };

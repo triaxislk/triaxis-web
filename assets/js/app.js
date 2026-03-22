@@ -154,9 +154,16 @@ document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             btn.disabled = true;
 
-            // EmailJS sendForm
-            // Service ID: service_o1c8aru
-            emailjs.sendForm('service_o1c8aru', 'template_eublc0p', contactForm)
+            // EmailJS send (Explicitly mapping fields to match the template)
+            const templateParams = {
+                name: contactForm.name.value,
+                email: contactForm.email.value,
+                message: contactForm.message.value,
+                title: 'New Message from TriAxis Website',
+                time: new Date().toLocaleString()
+            };
+
+            emailjs.send('service_o1c8aru', 'template_eublc0p', templateParams)
                 .then(() => {
                     btn.innerHTML = '<i data-lucide="check-circle"></i> Sent Successfully';
                     btn.style.background = '#10b981';

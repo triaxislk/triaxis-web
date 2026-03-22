@@ -233,11 +233,19 @@ section {
     justify-content: center;
 }
 
-.hero-image img {
+.hero-image img:not(.robot-float) {
     width: 100%;
     height: auto;
     border-radius: 2rem;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease;
+}
+
+.hero-image img.robot-float {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
     transition: transform 0.5s ease;
 }
 
@@ -415,6 +423,14 @@ section {
     transform: translateZ(0);
     will-change: transform, filter;
     backface-visibility: hidden;
+}
+
+.robot-float.white-robot {
+    width: 320px !important; /* Fixed width for consistency */
+    height: auto !important;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
 }
 
 .robot-glow {
@@ -636,10 +652,14 @@ section {
     }
 
     .robot-float {
-        width: 80% !important; 
-        max-width: 400px !important; 
+        width: 100% !important; 
+        max-width: 480px !important; 
         margin: 1rem auto 3rem;
         display: block;
+    }
+
+    .robot-float.white-robot {
+        width: 240px !important; /* Even smaller for mobile */
     }
 }
 

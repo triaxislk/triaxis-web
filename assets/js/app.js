@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Smart Dragon Lanka (Pvt) Ltd.' },
         { name: 'Swiss Lanka Commodities (Pvt) Ltd.' },
         { name: 'Sisili Hanaro Encare (Pvt) Ltd.' },
-        { name: 'Island Designs Giftware.' }
+        { name: 'Island Designs Giftware.' },
+        { name: 'SGS Lanka (Pvt) Ltd.' }
     ];
 
     const renderClients = () => {

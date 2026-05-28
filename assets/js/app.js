@@ -154,115 +154,128 @@ document.addEventListener('DOMContentLoaded', () => {
             const carousel = document.querySelector('.client-carousel');
             if (!carousel) return;
 
-            const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            let isDragging = false;
+            let startX = 0;
+            let scrollLeftStart = 0;
+            let isPaused = false;
+            const scrollSpeed = 0.5; // auto-scroll speed (px per frame)
 
-            if (isTouchDevice) {
-                // ---- MOBILE / TABLET: CSS animation-based auto-scroll ----
-                // CSS handles the smooth infinite scroll via translateX animation
-                // Touch: pause animation on touch, resume after finger lift
-                clientTrack.classList.add('css-scroll-active');
-
-                let touchStartY = 0;
-                let touchStartX = 0;
-
-                carousel.addEventListener('touchstart', (e) => {
-                    touchStartX = e.touches[0].pageX;
-                    touchStartY = e.touches[0].pageY;
-                    clientTrack.style.animationPlayState = 'paused';
-                }, { passive: true });
-
-                carousel.addEventListener('touchmove', (e) => {
-                    const dx = Math.abs(e.touches[0].pageX - touchStartX);
-                    const dy = Math.abs(e.touches[0].pageY - touchStartY);
-                    // If vertical scroll detected, resume animation immediately
-                    if (dy > dx) {
-                        clientTrack.style.animationPlayState = 'running';
-                    }
-                }, { passive: true });
-
-                carousel.addEventListener('touchend', () => {
-                    // Resume animation after a short pause delay
-                    setTimeout(() => {
-                        clientTrack.style.animationPlayState = 'running';
-                    }, 600);
-                }, { passive: true });
-
-            } else {
-                // ---- DESKTOP: JS requestAnimationFrame auto-scroll ----
-                let isDown = false;
-                let startX;
-                let scrollLeft;
-                let isPaused = false;
-                const scrollSpeed = 0.5;
-
-                const autoScroll = () => {
-                    if (!isPaused && !isDown) {
-                        carousel.scrollLeft += scrollSpeed;
-                        const halfWidth = clientTrack.scrollWidth / 2;
-                        if (carousel.scrollLeft >= halfWidth) {
-                            carousel.scrollLeft -= halfWidth;
-                        }
-                    }
-                    requestAnimationFrame(autoScroll);
-                };
-
-                // Hover to pause
-                carousel.addEventListener('mouseenter', () => { isPaused = true; });
-                carousel.addEventListener('mouseleave', () => { if (!isDown) isPaused = false; });
-
-                // Mouse drag
-                carousel.addEventListener('mousedown', (e) => {
-                    isDown = true;
-                    carousel.classList.add('grabbing');
-                    startX = e.pageX - carousel.offsetLeft;
-                    scrollLeft = carousel.scrollLeft;
-                    isPaused = true;
-                });
-
-                carousel.addEventListener('mouseleave', () => {
-                    isDown = false;
-                    carousel.classList.remove('grabbing');
-                    isPaused = false;
-                });
-
-                carousel.addEventListener('mouseup', () => {
-                    isDown = false;
-                    carousel.classList.remove('grabbing');
-                    isPaused = false;
+            // ── Auto Scroll (shared for all devices) ──────────────────────────
+            const autoScroll = () => {
+                if (!isPaused && !isDragging) {
+                    carousel.scrollLeft += scrollSpeed;
                     const halfWidth = clientTrack.scrollWidth / 2;
                     if (carousel.scrollLeft >= halfWidth) {
                         carousel.scrollLeft -= halfWidth;
-                    } else if (carousel.scrollLeft <= 0) {
-                        carousel.scrollLeft += halfWidth;
                     }
-                });
+                }
+                requestAnimationFrame(autoScroll);
+            };
 
-                carousel.addEventListener('mousemove', (e) => {
-                    if (!isDown) return;
-                    e.preventDefault();
-                    const x = e.pageX - carousel.offsetLeft;
-                    const walk = (x - startX) * 1.5;
-                    carousel.scrollLeft = scrollLeft - walk;
-                    const halfWidth = clientTrack.scrollWidth / 2;
-                    if (carousel.scrollLeft >= halfWidth) {
-                        scrollLeft -= halfWidth;
-                        startX = x;
-                    } else if (carousel.scrollLeft <= 0) {
-                        scrollLeft += halfWidth;
-                        startX = x;
-                    }
-                });
+            // ── DESKTOP: Mouse hover pause ─────────────────────────────────────
+            carousel.addEventListener('mouseenter', () => { isPaused = true; });
+            carousel.addEventListener('mouseleave', () => {
+                if (!isDragging) isPaused = false;
+            });
 
-                // Page Visibility API — resume when tab becomes visible again
-                document.addEventListener('visibilitychange', () => {
-                    if (!document.hidden && !isDown) isPaused = false;
-                });
+            // ── DESKTOP: Mouse drag ────────────────────────────────────────────
+            carousel.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                isPaused = true;
+                carousel.classList.add('grabbing');
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeftStart = carousel.scrollLeft;
+            });
 
-                autoScroll();
-            }
+            document.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                carousel.classList.remove('grabbing');
+                isPaused = false;
+                wrapScroll();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                carousel.scrollLeft = scrollLeftStart - walk;
+                wrapScroll(true);
+            });
+
+            // ── MOBILE/TABLET: Touch drag ─────────────────────────────────────
+            let touchStartY = 0;
+            let isHorizontalDrag = false;
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX;
+                touchStartY = e.touches[0].pageY;
+                scrollLeftStart = carousel.scrollLeft;
+                isHorizontalDrag = false;
+                // Pause auto-scroll immediately on touch
+                isPaused = true;
+                isDragging = true;
+            }, { passive: true });
+
+            carousel.addEventListener('touchmove', (e) => {
+                const dx = e.touches[0].pageX - startX;
+                const dy = e.touches[0].pageY - touchStartY;
+
+                // First move: decide horizontal or vertical
+                if (!isHorizontalDrag && Math.abs(dy) > Math.abs(dx) + 5) {
+                    // Vertical page scroll - release carousel
+                    isDragging = false;
+                    isPaused = false;
+                    return;
+                }
+                isHorizontalDrag = true;
+
+                // Horizontal drag - move carousel
+                const walk = dx * 1.2;
+                carousel.scrollLeft = scrollLeftStart - walk;
+
+                // Seamless loop wrap
+                const halfWidth = clientTrack.scrollWidth / 2;
+                if (carousel.scrollLeft >= halfWidth) {
+                    scrollLeftStart -= halfWidth;
+                    startX = e.touches[0].pageX;
+                    carousel.scrollLeft -= halfWidth;
+                } else if (carousel.scrollLeft <= 0) {
+                    scrollLeftStart += halfWidth;
+                    startX = e.touches[0].pageX;
+                    carousel.scrollLeft += halfWidth;
+                }
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', () => {
+                isDragging = false;
+                wrapScroll();
+                // Resume auto-scroll after a short pause
+                setTimeout(() => { isPaused = false; }, 700);
+            }, { passive: true });
+
+            // ── Helper: wrap scroll position into first half ───────────────────
+            const wrapScroll = (continuous = false) => {
+                if (continuous) return; // Don't wrap mid-drag, only on release
+                const halfWidth = clientTrack.scrollWidth / 2;
+                if (carousel.scrollLeft >= halfWidth) {
+                    carousel.scrollLeft -= halfWidth;
+                } else if (carousel.scrollLeft <= 0) {
+                    carousel.scrollLeft += halfWidth;
+                }
+            };
+
+            // Page Visibility API — resume when tab becomes active again
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden && !isDragging) isPaused = false;
+            });
+
+            autoScroll();
         };
 
         setupCarouselInteractions();
+
     };
     renderClients();
 

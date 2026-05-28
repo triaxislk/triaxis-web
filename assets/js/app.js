@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let startX = 0;
             let scrollLeftStart = 0;
             let isPaused = false;
-            const scrollSpeed = 0.5; // auto-scroll speed (px per frame)
+            const scrollSpeed = 1.2; // auto-scroll speed (px per frame)
             let resumeTimeout = null;
             let currentScroll = 0; // Floating point scroller position accumulator to avoid mobile/tablet integer scrollLeft rounding freeze
 

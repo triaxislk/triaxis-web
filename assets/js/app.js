@@ -1,5 +1,25 @@
 // TriAxis Solutions - Core JavaScript Logic
 
+window.onerror = function (message, source, lineno, colno, error) {
+    const errorDiv = document.createElement('div');
+    errorDiv.style.position = 'fixed';
+    errorDiv.style.top = '0';
+    errorDiv.style.left = '0';
+    errorDiv.style.width = '100%';
+    errorDiv.style.background = '#ef4444';
+    errorDiv.style.color = 'white';
+    errorDiv.style.padding = '1.5rem';
+    errorDiv.style.zIndex = '999999';
+    errorDiv.style.fontFamily = 'monospace';
+    errorDiv.style.fontSize = '15px';
+    errorDiv.style.lineHeight = '1.6';
+    errorDiv.style.borderBottom = '4px solid #b91c1c';
+    errorDiv.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+    errorDiv.innerHTML = `<strong>⚠️ JS Runtime Error Detected:</strong><br>${message}<br><br><strong>File:</strong> ${source}<br><strong>Line:</strong> ${lineno} | <strong>Column:</strong> ${colno}<br><br>Please copy this message and send it to me so I can fix it instantly!`;
+    document.body.appendChild(errorDiv);
+    return false;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize EmailJS
     if (typeof emailjs !== 'undefined') {
@@ -164,13 +184,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // This provides plenty of scrolling room in both directions for perfect infinite loops
             const setInitialPosition = () => {
                 const singleWidth = clientTrack.scrollWidth / 6;
-                carousel.scrollLeft = singleWidth * 2;
+                if (singleWidth > 0) {
+                    carousel.scrollLeft = singleWidth * 2;
+                }
             };
             
-            // Wait a frame for rendering to get correct dimensions
-            requestAnimationFrame(() => {
+            // Wait for full page load (fonts & styles) for 100% correct layout dimensions
+            if (document.readyState === 'complete') {
                 setInitialPosition();
-            });
+            } else {
+                window.addEventListener('load', setInitialPosition);
+            }
 
             // ── Seamless wrap function ──────────────────────────────────
             const checkWrap = () => {
@@ -203,84 +227,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(autoScroll);
             };
 
-            // ── DESKTOP: Mouse hover pause (only if pointing device supports hover) ──
-            const hasHover = window.matchMedia('(hover: hover)').matches;
-            if (hasHover) {
-                carousel.addEventListener('mouseenter', () => { isPaused = true; });
-                carousel.addEventListener('mouseleave', () => {
+            // ── Hover Pause (mouse only - completely avoids sticky touch emulation pause) ──
+            carousel.addEventListener('pointerenter', (e) => {
+                if (e.pointerType === 'mouse') {
+                    isPaused = true;
+                }
+            });
+            carousel.addEventListener('pointerleave', (e) => {
+                if (e.pointerType === 'mouse') {
                     if (!isDragging) isPaused = false;
-                });
-            }
+                }
+            });
 
-            // ── DESKTOP: Mouse drag ────────────────────────────────────────────
-            carousel.addEventListener('mousedown', (e) => {
+            // ── Drag & Touch (unified via Pointer Events) ─────────────────────
+            carousel.addEventListener('pointerdown', (e) => {
+                if (e.button === 2) return; // Ignore right clicks
+                
                 isDragging = true;
                 isPaused = true;
                 carousel.classList.add('grabbing');
+                
+                // Keep tracking pointer even if it leaves the element bounds
+                try {
+                    carousel.setPointerCapture(e.pointerId);
+                } catch (err) {}
+                
                 startX = e.pageX - carousel.offsetLeft;
                 scrollLeftStart = carousel.scrollLeft;
             });
 
-            document.addEventListener('mouseup', () => {
+            carousel.addEventListener('pointermove', (e) => {
                 if (!isDragging) return;
-                isDragging = false;
-                carousel.classList.remove('grabbing');
-                
-                // Resume auto-scroll after a short delay
-                clearTimeout(resumeTimeout);
-                resumeTimeout = setTimeout(() => {
-                    if (!isDragging) isPaused = false;
-                }, 1000);
-            });
-
-            document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
                 const x = e.pageX - carousel.offsetLeft;
                 const walk = (x - startX) * 1.5;
                 carousel.scrollLeft = scrollLeftStart - walk;
             });
 
-            // ── MOBILE/TABLET: Touch drag ─────────────────────────────────────
-            let touchStartY = 0;
-            let isHorizontalDrag = false;
-
-            carousel.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].pageX;
-                touchStartY = e.touches[0].pageY;
-                scrollLeftStart = carousel.scrollLeft;
-                isHorizontalDrag = false;
-                isPaused = true;
-                isDragging = true;
-            }, { passive: true });
-
-            carousel.addEventListener('touchmove', (e) => {
+            const handlePointerUp = (e) => {
                 if (!isDragging) return;
-                const dx = e.touches[0].pageX - startX;
-                const dy = e.touches[0].pageY - touchStartY;
-
-                // Decide horizontal or vertical swipe
-                if (!isHorizontalDrag && Math.abs(dy) > Math.abs(dx) + 5) {
-                    isDragging = false;
-                    isPaused = false;
-                    return;
-                }
-                isHorizontalDrag = true;
-
-                // Move carousel scroll position
-                const walk = dx * 1.5;
-                carousel.scrollLeft = scrollLeftStart - walk;
-            }, { passive: true });
-
-            carousel.addEventListener('touchend', () => {
                 isDragging = false;
+                carousel.classList.remove('grabbing');
                 
+                try {
+                    carousel.releasePointerCapture(e.pointerId);
+                } catch (err) {}
+
                 // Resume auto-scroll after a brief delay
                 clearTimeout(resumeTimeout);
                 resumeTimeout = setTimeout(() => {
                     if (!isDragging) isPaused = false;
                 }, 1000);
-            }, { passive: true });
+            };
+
+            carousel.addEventListener('pointerup', handlePointerUp);
+            carousel.addEventListener('pointercancel', handlePointerUp);
 
             // Helper to pause auto-scroll temporarily (used by nav buttons)
             const pauseAutoScroll = (duration = 2000) => {
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnPrev.addEventListener('click', () => {
                     pauseAutoScroll(2500);
                     carousel.scrollBy({
-                        left: -scrollStep,
+                        left: scrollStep,
                         behavior: 'smooth'
                     });
                 });
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnNext.addEventListener('click', () => {
                     pauseAutoScroll(2500);
                     carousel.scrollBy({
-                        left: scrollStep,
+                        left: -scrollStep,
                         behavior: 'smooth'
                     });
                 });

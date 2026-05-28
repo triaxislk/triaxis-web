@@ -37,34 +37,62 @@ document.addEventListener('DOMContentLoaded', () => {
         const navLinks = document.querySelector('.nav-links');
         const overlay = document.getElementById('menu-overlay');
         const navItems = document.querySelectorAll('.nav-links a');
-        
-        const toggleMenu = () => {
-            navLinks.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-            
+
+        if (!menuBtn || !navLinks || !overlay) return;
+
+        let isMenuOpen = false;
+        let isToggling = false; // Prevent double-fire from touchstart + click
+
+        const openMenu = () => {
+            isMenuOpen = true;
+            navLinks.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            menuBtn.setAttribute('aria-expanded', 'true');
             const icon = menuBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.setAttribute('data-lucide', 'x');
-            } else {
-                icon.setAttribute('data-lucide', 'menu');
-            }
-            lucide.createIcons();
+            if (icon) { icon.setAttribute('data-lucide', 'x'); lucide.createIcons(); }
         };
 
-        if (menuBtn && navLinks && overlay) {
-            menuBtn.addEventListener('click', toggleMenu);
-            overlay.addEventListener('click', toggleMenu);
-            
-            // Close menu when clicking a link
-            navItems.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navLinks.classList.contains('active')) {
-                        toggleMenu();
-                    }
-                }, { passive: true });
-            });
-        }
+        const closeMenu = () => {
+            isMenuOpen = false;
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            menuBtn.setAttribute('aria-expanded', 'false');
+            const icon = menuBtn.querySelector('i');
+            if (icon) { icon.setAttribute('data-lucide', 'menu'); lucide.createIcons(); }
+        };
+
+        const toggleMenu = () => {
+            if (isToggling) return;
+            isToggling = true;
+            setTimeout(() => { isToggling = false; }, 350);
+            isMenuOpen ? closeMenu() : openMenu();
+        };
+
+        // touchstart fires 300ms before click on mobile - use it for instant response
+        // preventDefault stops the ghost click that causes double-toggle
+        menuBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            toggleMenu();
+        }, { passive: false });
+
+        // click handles desktop + fallback for non-touch devices
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Close on overlay tap/click
+        overlay.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            closeMenu();
+        }, { passive: false });
+        overlay.addEventListener('click', closeMenu);
+
+        // Close menu when a nav link is tapped
+        navItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) closeMenu();
+            }, { passive: true });
+        });
     };
 
     setupMobileMenu();

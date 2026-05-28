@@ -1,0 +1,35 @@
+window.triaxisClients = [
+    {
+        "name": "HNB Assurance PLC."
+    },
+    {
+        "name": "HNB General Insurance Limited."
+    },
+    {
+        "name": "Trinity Asia (Pvt) Ltd."
+    },
+    {
+        "name": "Timex Garments (Pvt) Ltd."
+    },
+    {
+        "name": "SilverMill Natural Beverages (Pvt) Ltd."
+    },
+    {
+        "name": "Smart Dragon Lanka (Pvt) Ltd."
+    },
+    {
+        "name": "Swiss Lanka Commodities (Pvt) Ltd."
+    },
+    {
+        "name": "Sisili Hanaro Encare (Pvt) Ltd."
+    },
+    {
+        "name": "Island Designs Giftware."
+    },
+    {
+        "name": "SGS Lanka (Pvt) Ltd."
+    },
+    {
+        "name": "Samuel 7 Restaurant & Bar."
+    }
+];

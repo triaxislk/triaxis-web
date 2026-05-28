@@ -1,0 +1,6 @@
+# Ignore the private local client management panel
+admin-panel/
+
+# OS/System files
+.DS_Store
+Thumbs.db

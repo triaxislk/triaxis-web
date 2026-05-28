@@ -375,33 +375,29 @@ section {
 
 /* Infinite Carousel Styles */
 .client-carousel {
-    overflow: hidden;
+    overflow-x: auto;
     padding: 3rem 0;
     position: relative;
     background: transparent;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch; /* smooth touch scroll for older iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.client-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.client-carousel:active {
+    cursor: grabbing;
 }
 
 .carousel-track {
     display: flex;
     gap: 2rem; /* Tighter gap for better flow */
     width: max-content;
-    animation: scroll 120s linear infinite; /* Extremely slow for maximum readability */
-    will-change: transform;
-}
-
-/* Tablet improvements (keep other styles if any) */
-@media (max-width: 1024px) {
-    /* No speed scale-down needed if 120s is base */
-}
-
-/* Mobile improvements */
-@media (max-width: 768px) {
-    /* No speed scale-down needed if 120s is base */
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Still -50% because we want to loop half of the duplicated content */
+    will-change: scroll-position;
 }
 
 @keyframes float {

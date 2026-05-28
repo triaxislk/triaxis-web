@@ -179,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let isPaused = false;
             const scrollSpeed = 0.5; // auto-scroll speed (px per frame)
             let resumeTimeout = null;
+            let currentScroll = 0; // Floating point scroller position accumulator to avoid mobile/tablet integer scrollLeft rounding freeze
 
             // Start the carousel in the middle of the track on load
             // This provides plenty of scrolling room in both directions for perfect infinite loops
@@ -186,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const singleWidth = clientTrack.scrollWidth / 6;
                 if (singleWidth > 0) {
                     carousel.scrollLeft = singleWidth * 2;
+                    currentScroll = carousel.scrollLeft;
                 }
             };
             
@@ -204,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // If it goes past copy 4, shift back by one copy
                 if (carousel.scrollLeft >= singleWidth * 4) {
                     carousel.scrollLeft -= singleWidth;
+                    currentScroll -= singleWidth;
                     if (isDragging) {
                         scrollLeftStart -= singleWidth;
                     }
@@ -211,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // If it goes before copy 2, shift forward by one copy
                 else if (carousel.scrollLeft <= singleWidth * 1) {
                     carousel.scrollLeft += singleWidth;
+                    currentScroll += singleWidth;
                     if (isDragging) {
                         scrollLeftStart += singleWidth;
                     }
@@ -220,7 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // ── Auto Scroll (shared for all devices) ──────────────────────────
             const autoScroll = () => {
                 if (!isPaused && !isDragging) {
-                    carousel.scrollLeft += scrollSpeed;
+                    currentScroll += scrollSpeed;
+                    carousel.scrollLeft = Math.floor(currentScroll);
+                } else {
+                    currentScroll = carousel.scrollLeft; // Sync accumulator during manual scrolls
                 }
                 
                 checkWrap();

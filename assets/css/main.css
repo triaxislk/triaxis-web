@@ -395,9 +395,19 @@ section {
 
 .carousel-track {
     display: flex;
-    gap: 2rem; /* Tighter gap for better flow */
+    gap: 2rem;
     width: max-content;
-    will-change: scroll-position;
+    will-change: transform;
+}
+
+/* Mobile/Tablet: CSS-based infinite marquee animation */
+@keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.carousel-track.css-scroll-active {
+    animation: marquee-scroll 30s linear infinite;
 }
 
 @keyframes float {

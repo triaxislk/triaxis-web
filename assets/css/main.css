@@ -374,6 +374,81 @@ section {
 }
 
 /* Infinite Carousel Styles */
+.client-carousel-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-control-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 5px 25px rgba(0, 122, 255, 0.1), 
+                inset 0 0 15px rgba(0, 122, 255, 0.05);
+}
+
+.carousel-control-btn i {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-control-btn:hover {
+    background: rgba(0, 122, 255, 0.15);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 0 25px rgba(0, 122, 255, 0.4);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-control-btn.prev-btn:hover i {
+    transform: translateX(-2px);
+}
+
+.carousel-control-btn.next-btn:hover i {
+    transform: translateX(2px);
+}
+
+.carousel-control-btn:active {
+    transform: translateY(-50%) scale(0.93);
+}
+
+.carousel-control-btn.prev-btn {
+    left: 2rem;
+}
+
+.carousel-control-btn.next-btn {
+    right: 2rem;
+}
+
+@media (max-width: 768px) {
+    .carousel-control-btn {
+        width: 44px;
+        height: 44px;
+        background: rgba(10, 10, 12, 0.7);
+    }
+    .carousel-control-btn.prev-btn {
+        left: 0.75rem;
+    }
+    .carousel-control-btn.next-btn {
+        right: 0.75rem;
+    }
+}
+
 .client-carousel {
     overflow-x: auto;
     padding: 3rem 0;
@@ -383,6 +458,7 @@ section {
     user-select: none;
     -webkit-overflow-scrolling: touch; /* smooth touch scroll for older iOS */
     scrollbar-width: none; /* Hide scrollbar for Firefox */
+    touch-action: pan-y;
 }
 
 .client-carousel::-webkit-scrollbar {

@@ -407,7 +407,7 @@ section {
 }
 
 .carousel-track.css-scroll-active {
-    animation: marquee-scroll 30s linear infinite;
+    animation: marquee-scroll 70s linear infinite;
 }
 
 @keyframes float {

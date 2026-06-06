@@ -1,18 +1,27 @@
 [
     {
-        "name": "HNB Assurance PLC."
-    },
-    {
         "name": "HNB General Insurance Limited."
     },
     {
-        "name": "Trinity Asia (Pvt) Ltd."
+        "name": "Ninewells Hospital (Pvt) Ltd."
+    },
+    {
+        "name": "HNB Life PLC."
+    },
+    {
+        "name": "SGS Lanka (Pvt) Ltd."
     },
     {
         "name": "Timex Garments (Pvt) Ltd."
     },
     {
         "name": "SilverMill Natural Beverages (Pvt) Ltd."
+    },
+    {
+        "name": "Samuel 7 Restaurant & Bar."
+    },
+    {
+        "name": "Trinity Asia (Pvt) Ltd."
     },
     {
         "name": "Smart Dragon Lanka (Pvt) Ltd."
@@ -25,14 +34,5 @@
     },
     {
         "name": "Island Designs Giftware."
-    },
-    {
-        "name": "SGS Lanka (Pvt) Ltd."
-    },
-    {
-        "name": "Samuel 7 Restaurant & Bar."
-    },
-    {
-        "name": "Ninewells Hospital (Pvt) Ltd."
     }
 ]
